@@ -72,8 +72,8 @@ class CourseServiceImpl(
     }
 
     override fun getLectureList(courseId: Long): List<LectureResponse> {
-        val lecture = lectureRepository.findByIdOrNull(getLectureById()) ?: throw ModelNotFoundException("lecture", getLectureById())
-        return  lectureRepository.save(lecture).toResponse()
+        val lecture = lectureRepository.findByIdOrNull(courseId) ?: throw ModelNotFoundException("Course", courseId)
+        return lectureRepository.findAll().map { it.toResponse() }
     }
 
     override fun getLectureById(courseId: Long, lectureid: Long): LectureResponse {
