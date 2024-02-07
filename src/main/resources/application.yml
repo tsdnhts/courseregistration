@@ -1,0 +1,7 @@
+server:
+  port: 8090
+spring:
+  datasource:
+    url: jdbc:postgresql://aws-0-ap-northeast-2.pooler.supabase.com:5432/postgres
+    username : postgres.fdndlhpcohyoljbbegbx
+    password : 3F0w0BGMFzBveQ9e
