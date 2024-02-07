@@ -62,7 +62,10 @@ class CourseServiceImpl(
         course.title = title
         course.description = description
 
-        return courseRepository.save(course).toResponse()
+        return course.toResponse()
+//        return courseRepository.save(course).toResponse()
+//        update는 dirty checking으로 저장이 되어 따로 courseRepository.save(course) 이런식으로 기입하지 않아도 된다.
+//        추후 테스트 할때 두가지를 바꿔 가면서 테스트해 보자
     }
 
     @Transactional
@@ -72,17 +75,25 @@ class CourseServiceImpl(
     }
 
     override fun getLectureList(courseId: Long): List<LectureResponse> {
-        val lecture = lectureRepository.findByIdOrNull(courseId) ?: throw ModelNotFoundException("Course", courseId)
-        return lectureRepository.findAll().map { it.toResponse() }
+        val course = courseRepository.findByIdOrNull(courseId) ?: throw ModelNotFoundException("Course", courseId)
+        return course.lectures.map { it.toResponse() }
     }
 
     override fun getLectureById(courseId: Long, lectureid: Long): LectureResponse {
-        TODO("Not yet implemented")
+        val lecture = lectureRepository.findByIdOrNull(lectureid) ?: throw ModelNotFoundException("Lecture", lectureid)
+        return lecture.toResponse()
     }
 
     @Transactional
     override fun addLecture(courseId: Long, request: AddLectureRequest): LectureResponse {
-        TODO("Not yet implemented")
+        val course = courseRepository.findByIdOrNull(courseId) ?: throw ModelNotFoundException("Course", courseId)
+           Lecture(
+                title = request.title,
+                videoUrl = request.videoUrl,
+                course = Course,
+            )
+            .toResponse()
+        )
     }
 
     @Transactional
