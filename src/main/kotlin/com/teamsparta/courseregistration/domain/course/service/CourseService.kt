@@ -12,7 +12,6 @@ import com.teamsparta.courseregistration.domain.lecture.dto.UpdateLectureRequest
 import com.teamsparta.courseregistration.domain.user.dto.SignUpRequest
 import com.teamsparta.courseregistration.domain.user.dto.UpdateUserProfileRequest
 import com.teamsparta.courseregistration.domain.user.dto.UserResponse
-import org.springframework.http.ResponseEntity
 
 
 interface CourseService {
@@ -28,7 +27,7 @@ interface CourseService {
 
     fun getLectureList(courseId: Long) : List<LectureResponse>
 
-    fun getLectureById(courseId: Long, lectureid : Long) : LectureResponse
+    fun getLecture(courseId: Long, lectureid : Long) : LectureResponse
 
     fun addLecture(courseId: Long, request: AddLectureRequest) : LectureResponse
 
@@ -40,8 +39,8 @@ interface CourseService {
 
     fun getCourseApplicationList(courseId: Long) : List<CourseApplicationResponse>
 
-    fun getApplication(courseId: Long,
-                       applicationId : Long
+    fun getCourseApplication(courseId: Long,
+                             applicationId : Long
     ) : CourseApplicationResponse
 
     fun applyCourse(courseId: Long, request: ApplyCourseRequest) : CourseApplicationResponse
@@ -54,6 +53,5 @@ interface CourseService {
     fun signup(request : SignUpRequest) : UserResponse
 
     fun updateUserProfile(userid : Long, request: UpdateUserProfileRequest) : UserResponse
-
 
 }

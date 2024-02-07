@@ -14,14 +14,14 @@ class CourseApplication(
 
     @Enumerated
     @Column(name = "status")
-    var status: CourseApplicationStatus,
+    var status: CourseApplicationStatus = CourseApplicationStatus.PENDING,
 
-    @ManyToOne()
-    @JoinColumn(name = "course_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
     val course: Course,
 
-    @ManyToOne()
-    @JoinColumn(name = "user_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     val user: User
 
 
@@ -29,6 +29,18 @@ class CourseApplication(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
+
+    fun isProceeded(): Boolean {
+        return status != CourseApplicationStatus.PENDING
+    }
+
+    fun accept() {
+        status = CourseApplicationStatus.ACCEPTED
+    }
+
+    fun reject() {
+        status = CourseApplicationStatus.REJECTED
+    }
 }
 fun CourseApplication.toResponse(): CourseApplicationResponse {
     return CourseApplicationResponse(

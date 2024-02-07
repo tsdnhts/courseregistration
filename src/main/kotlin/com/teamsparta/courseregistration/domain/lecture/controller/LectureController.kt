@@ -34,7 +34,7 @@ class LectureController(
     ) : ResponseEntity<LectureResponse>{
         return ResponseEntity
             .status(HttpStatus.OK)
-            .body(courseService.getLectureById(courseId, lectureId))
+            .body(courseService.getLecture(courseId, lectureId))
     }
 
     @Transactional

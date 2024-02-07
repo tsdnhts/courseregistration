@@ -10,6 +10,6 @@ interface UserRepository : JpaRepository<User, Long> {
 
 //    fun findByEmail(email: String) : User?
 
-    @Query("select u from User u where u.email=:email")
-    fun findByEmail(email: String) : User?
+//    @Query("select u from User u where u.email=:email")
+//    fun findByEmail(email: String) : User?
 }

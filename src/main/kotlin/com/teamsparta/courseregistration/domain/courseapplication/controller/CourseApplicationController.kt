@@ -35,7 +35,7 @@ class CourseApplicationController(
     ): ResponseEntity<CourseApplicationResponse> {
         return ResponseEntity
             .status(HttpStatus.OK)
-            .body(courseService.getApplication(courseId, applicationId))
+            .body(courseService.getCourseApplication(courseId, applicationId))
     }
 
     @PostMapping()
