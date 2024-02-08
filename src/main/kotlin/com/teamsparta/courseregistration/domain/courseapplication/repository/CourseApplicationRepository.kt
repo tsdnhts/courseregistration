@@ -4,7 +4,7 @@ import com.teamsparta.courseregistration.domain.courseapplication.model.CourseAp
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface CourseApplicationRepository : JpaRepository<CourseApplication, Long> {
-    fun existByCourseIdAndUserId(courseId: Long, userId: Long): Boolean
+    fun existsByCourseIdAndUserId(courseId: Long, userId: Long): Boolean
 
-//    fun findByCourseIdAndId(courseId: Long, id: Long): CourseApplication?
+    fun findByCourseIdAndId(courseId: Long, id: Long): CourseApplication?
 }

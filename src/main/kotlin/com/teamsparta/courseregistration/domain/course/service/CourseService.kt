@@ -50,8 +50,5 @@ interface CourseService {
                                       request : UpdateApplicationStatusRequest
     ) : CourseApplicationResponse
 
-    fun signup(request : SignUpRequest) : UserResponse
-
-    fun updateUserProfile(userid : Long, request: UpdateUserProfileRequest) : UserResponse
 
 }
